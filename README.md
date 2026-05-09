@@ -1,39 +1,39 @@
-# piscine-42 (42 Bangkok Piscine backup)
+# piscine-42 — 42 Bangkok Piscine backup 🏊‍♂️
 
-This repository is a personal backup of my **42 Bangkok Piscine** exercises.
+A personal backup of my **42 Bangkok Piscine** exercises. This repository is primarily intended for reference and archival purposes.
 
-> Note: This is **not** intended as a “ready-to-run” project. I’m keeping these files for reference/archival.
+> ⚠️ **Note:** This is **not** a “ready-to-run” project. Files may be incomplete, updated over time, or require the 42 evaluation environment.
 
-## At a glance
+## At a glance ✨
 
 - **Languages:** C (≈99%), Shell (≈1%)
-- **Goal:** keep my Piscine work organized and easy to review later
-- **Audience:** future-me (and anyone curious about the Piscine structure)
+- **Goal:** keep Piscine work organized and easy to review later
+- **Audience:** future me (and anyone curious about the Piscine structure)
 
-## Key concepts (what you’ll practice here)
+## What you’ll practice 🧠
 
-### C Piscine (C00–C13)
+### C Piscine (C00–C13) 💻
 
-Typical topics you encounter across the modules:
+Topics commonly covered across modules:
 
-- **C basics:** types, variables, operators, conditionals, loops
+- **C fundamentals:** types, variables, operators, conditionals, loops
 - **Functions:** prototypes, parameters, return values
 - **Pointers:** addresses, dereferencing, pointer arithmetic
 - **Strings:** `char *`, null-termination, common string operations
 - **Arrays:** 1D/2D arrays and indexing
-- **Memory (later modules):** stack vs. heap basics, dynamic allocation basics
-- **Compilation:** `gcc`, flags, warnings, simple builds
-- **Problem solving:** implementing small utilities with limited standard library usage
+- **Memory (later modules):** stack vs. heap basics, intro to dynamic allocation
+- **Compilation:** `gcc`, common flags, warnings, simple builds
+- **Problem solving:** small utilities with limited standard library usage
 
-### Shell Piscine (Shell00–Shell01)
+### Shell Piscine (Shell00–Shell01) 🐚
 
-Common skills practiced:
+Skills commonly practiced:
 
 - **Navigation & files:** `ls`, `cd`, `pwd`, `cp`, `mv`, `rm`, permissions
 - **Text processing:** `cat`, `grep`, `cut`, `sort`, `uniq`, pipes/redirections
 - **Scripting basics:** variables, quoting, simple automation
 
-## Contents
+## Contents 📁
 
 ### C Piscine
 - `C00/`
@@ -45,7 +45,7 @@ Common skills practiced:
 - `shell00/`
 - `shell01/`
 
-## Structure (typical)
+## Structure (typical) 🧩
 
 Each module directory usually contains exercise folders such as:
 
@@ -56,7 +56,7 @@ And inside each exercise you’ll typically find source files like:
 - `*.c` for C exercises
 - shell scripts / small utilities for Shell exercises
 
-## Progress checklist
+## Progress checklist ✅
 
 ### C Piscine
 - [ ] C00 (6/9)
@@ -80,8 +80,8 @@ And inside each exercise you’ll typically find source files like:
 
 ---
 
-## Notes
+## Notes 📝
 
 - This repo is mainly **C** (with a small amount of Shell).
 - Solutions may be incomplete or changed over time.
-- Kept as a backup + history of learning progress.
+- Kept as a backup and a history of learning progress.
