@@ -4,15 +4,11 @@ This repository is a personal backup of my **42 Bangkok Piscine** exercises.
 
 > Note: This is **not** intended as a “ready-to-run” project. I’m keeping these files for reference/archival.
 
----
-
 ## At a glance
 
 - **Languages:** C (≈99%), Shell (≈1%)
 - **Goal:** keep my Piscine work organized and easy to review later
 - **Audience:** future-me (and anyone curious about the Piscine structure)
-
----
 
 ## Key concepts (what you’ll practice here)
 
@@ -37,8 +33,6 @@ Common skills practiced:
 - **Text processing:** `cat`, `grep`, `cut`, `sort`, `uniq`, pipes/redirections
 - **Scripting basics:** variables, quoting, simple automation
 
----
-
 ## Contents
 
 ### C Piscine
@@ -51,8 +45,6 @@ Common skills practiced:
 - `shell00/`
 - `shell01/`
 
----
-
 ## Structure (typical)
 
 Each module directory usually contains exercise folders such as:
@@ -64,14 +56,12 @@ And inside each exercise you’ll typically find source files like:
 - `*.c` for C exercises
 - shell scripts / small utilities for Shell exercises
 
----
-
 ## Progress checklist
 
 ### C Piscine
-- [ ] C00
-- [ ] C01
-- [ ] C02
+- [ ] C00 (6/9)
+- [ ] C01 (7/9)
+- [ ] C02 (7/12)
 - [ ] C03
 - [ ] C04
 - [ ] C05
@@ -85,8 +75,8 @@ And inside each exercise you’ll typically find source files like:
 - [ ] C13
 
 ### Shell Piscine
-- [ ] Shell00
-- [ ] Shell01
+- [ ] Shell00 (7/10)
+- [ ] Shell01 (5/8)
 
 ---
 
