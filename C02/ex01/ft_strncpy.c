@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/07 15:38:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/07 15:38:38 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/05/09 22:54:29 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/05/09 23:01:58 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void  ft_ultimate_div_mod(int *a, int *b){
-  int tmp[2];
-  int a[2];
+char	*ft_strncpy(char *dest, char *str, unsigned int n);
 
-  i[0] = *a;
-  i[1] = *b;
-  *a = i[0] / i[1];
-  *b = i[0] % i[1];
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
 }
-
