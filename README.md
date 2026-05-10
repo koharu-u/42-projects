@@ -61,7 +61,7 @@ And inside each exercise you’ll typically find source files like:
 ### C Piscine
 - [ ] C00 (6/9)
 - [ ] C01 (7/9)
-- [ ] C02 (7/12)
+- [ ] C02 (9/12)
 - [ ] C03
 - [ ] C04
 - [ ] C05
