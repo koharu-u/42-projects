@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 23:08:00 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/09 23:34:07 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/05/10 14:10:53 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_str_is_printable(char *str)
 	is_printable = 1;
 	while (str[i])
 	{
-		if (((str[i] >= 0) && (str[i] <= 30)) || (str[i] == 127))
+		if (((str[i] >= 0) && (str[i] <= 31)) || (str[i] == 127))
 		{
 			is_printable = 0;
 		}

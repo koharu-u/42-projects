@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 23:08:00 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/10 14:10:34 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/05/10 13:38:09 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/05/10 13:59:36 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "unistd.h"
 
-int	ft_str_is_lowercase(char *str);
+char	*ft_strupcase(char *str);
 
-int	ft_str_is_lowercase(char *str)
+char	*ft_strupcase(char *str)
 {
 	int	i;
-	int	is_lowercase;
 
 	i = 0;
-	is_lowercase = 1;
 	while (str[i])
 	{
-		if (!((str[i] >= 97 && str[i] <= 122)))
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			is_lowercase = 0;
+			str[i] = ('A' + (str[i] - 'a'));
 		}
 		i++;
 	}
-	return (is_lowercase);
+	return (str);
 }

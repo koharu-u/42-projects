@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 22:32:42 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/09 22:46:02 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/05/10 10:09:46 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ char	*ft_strcpy(char *dest, char *str)
 		dest[i] = str[i];
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
