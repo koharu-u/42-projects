@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/10 21:07:08 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/11 08:57:15 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/05/11 10:08:10 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/05/11 11:06:38 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "unistd.h"
 
-int	ft_strcmp(char *s1, char *s2);
+char	*ft_strcat(char *dest, char *src);
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while ((s1[i] == s2[i]) && s1[i])
-	{
+	j = 0;
+	while (dest[i])
 		i++;
+	while (src[j])
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	return (s1[i] - s2[i]);
+	return (dest);
 }

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/10 21:07:08 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/11 08:57:15 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/05/11 11:43:07 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/05/11 15:27:10 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2);
+char	*ft_strstr(char *str, char *to_find);
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strstr(char *str, char *to_find)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while ((s1[i] == s2[i]) && s1[i])
+	if (str[0] == '\0')
+		return (NULL);
+	while (str[i])
 	{
+		j = 0;
+		while ((to_find[j]) && (str[i + j] == to_find[j]))
+			j++;
+		if (to_find[j] == '\0')
+			return (str + i);
 		i++;
 	}
-	return (s1[i] - s2[i]);
+	return (NULL);
 }
