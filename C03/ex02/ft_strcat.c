@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 10:08:10 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/11 11:06:38 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/05/12 12:45:23 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*ft_strcat(char *dest, char *src)
 		i++;
 		j++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }

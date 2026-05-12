@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:43:07 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/11 15:27:10 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/05/12 12:34:49 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strstr(char *str, char *to_find)
 
 	i = 0;
 	if (str[0] == '\0')
-		return (NULL);
+		return (0x00);
 	while (str[i])
 	{
 		j = 0;
@@ -31,5 +31,5 @@ char	*ft_strstr(char *str, char *to_find)
 			return (str + i);
 		i++;
 	}
-	return (NULL);
+	return (0x00);
 }
