@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/11 11:43:07 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/13 10:26:02 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/05/13 12:16:42 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/05/13 13:52:12 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char	*ft_strstr(char *str, char *to_find);
+void	ft_putnbr(int nb);
 
-char	*ft_strstr(char *str, char *to_find)
+void	ft_putnbr(int nb)
 {
-	unsigned int	i;
-	unsigned int	j;
+	char	tmp;
 
-	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i])
+	if (nb == -2147483648)
 	{
-		j = 0;
-		while ((to_find[j]) && (str[i + j] == to_find[j]))
-			j++;
-		if (to_find[j] == '\0')
-			return (str + i);
-		i++;
+		write(1, "-2147483648", 11);
+		return ;
 	}
-	return (0x00);
+	if (nb < 0)
+	{
+		nb = -nb;
+		write(1, "-", 1);
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+	}
+	tmp = (nb % 10) + '0';
+	write(1, &tmp, 1);
 }
