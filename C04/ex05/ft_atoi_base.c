@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:20:32 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/14 09:16:19 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:54:29 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr_base(int nbr, char *base);
-
-void	print_nb(long nmbr, char *bs, int len)
-{
-	if (nmbr >= len)
-		print_nb(nmbr / len, bs, len);
-	write(1, &bs[nmbr % len], 1);
-}
+int	ft_putnbr_base(int nbr, char *base);
 
 int	detect_invalid(char *base, int cnt_base)
 {
@@ -49,23 +42,46 @@ int	detect_invalid(char *base, int cnt_base)
 	return (0);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	chk_base(char str, char *base)
 {
-	unsigned int	cnt_base;
-	long			mbr_long;
-	int				is_invalid;
+	int	i;
 
+	i = 0;
+	while (base[i])
+	{
+		if (str == base[i])
+			return (i);
+		else
+			i++;
+	}
+	return (-1);
+}
+
+int	ft_atoi_base(char *str, char *base)
+{
+	int				int_rtn;
+	int				symbol;
+	unsigned int	cnt_base;
+
+	int_rtn = 0;
+	symbol = 1;
 	cnt_base = 0;
-	mbr_long = nbr;
 	while (base[cnt_base])
 		cnt_base++;
-	is_invalid = detect_invalid(base, cnt_base);
-	if (is_invalid == 1)
-		return ;
-	if (nbr < 0)
+	if (detect_invalid(base, cnt_base) == 1)
+		return (0);
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	while ((*str == '-') || (*str == '+'))
 	{
-		mbr_long = -mbr_long;
-		write(1, "-", 1);
+		if (*str == '-')
+			symbol = -symbol;
+		str++;
 	}
-	print_nb(mbr_long, base, cnt_base);
+	while (chk_base(*str, base) != -1)
+	{
+		int_rtn = (int_rtn * cnt_base) + ((chk_base(*str, base)));
+		str++;
+	}
+	return (int_rtn * symbol);
 }
