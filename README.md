@@ -6,13 +6,13 @@ A personal backup of my **42 Bangkok Piscine** exercises. This repository is pri
 
 ## At a glance ✨
 
-- **Languages:** C (≈99%), Shell (≈1%)
+- **Languages:** C (99.6%), Shell (0.4%)
 - **Goal:** keep Piscine work organized and easy to review later
 - **Audience:** future me (and anyone curious about the Piscine structure)
 
-## What you’ll practice 🧠
+## What you’ll practice 🧫
 
-### C Piscine (C00–C13) 💻
+### C Piscine (C00–C13) 💸
 
 Topics commonly covered across modules:
 
@@ -25,7 +25,7 @@ Topics commonly covered across modules:
 - **Compilation:** `gcc`, common flags, warnings, simple builds
 - **Problem solving:** small utilities with limited standard library usage
 
-### Shell Piscine (Shell00–Shell01) 🐚
+### Shell Piscine (Shell00–Shell01) 🚡
 
 Skills commonly practiced:
 
@@ -33,19 +33,21 @@ Skills commonly practiced:
 - **Text processing:** `cat`, `grep`, `cut`, `sort`, `uniq`, pipes/redirections
 - **Scripting basics:** variables, quoting, simple automation
 
-## Contents 📁
+## Contents 🗃
 
 ### C Piscine
+
 - `C00/`
 - `C01/`
 - `C02/`
 - ...
 
 ### Shell Piscine
+
 - `shell00/`
 - `shell01/`
 
-## Structure (typical) 🧩
+## Structure (typical) 🏗
 
 Each module directory usually contains exercise folders such as:
 
@@ -56,16 +58,17 @@ And inside each exercise you’ll typically find source files like:
 - `*.c` for C exercises
 - shell scripts / small utilities for Shell exercises
 
-## Progress checklist ✅
+## Progress checklist ✔
 
 ### C Piscine
-- [ ] C00 (6/9)
-- [ ] C01 (7/9)
-- [ ] C02 (9/12)
-- [ ] C03
-- [ ] C04
-- [ ] C05
-- [ ] C06
+
+- [x] C00 (60%)
+- [x] C01 (70%)
+- [x] C02 (55%)
+- [x] C03 (100%)
+- [x] C04 (100%)
+- [x] C05 (80%)
+- [x] C06 (100%)
 - [ ] C07
 - [ ] C08
 - [ ] C09
@@ -75,8 +78,9 @@ And inside each exercise you’ll typically find source files like:
 - [ ] C13
 
 ### Shell Piscine
+
 - [ ] Shell00 (7/10)
-- [ ] Shell01 (5/8)
+- [x] Shell01 (5/8)
 
 ---
 
