@@ -59,16 +59,16 @@ And inside each exercise you’ll typically find source files like:
 ## Progress checklist ✔
 
 ### C Piscine
-- [ ] C00 (6/9)
-- [ ] C01 (7/9)
-- [ ] C02 (9/12)
-- [ ] C03
-- [ ] C04
-- [ ] C05
-- [ ] C06
+- [x] C00 (60%)
+- [x] C01 (70%)
+- [x] C02 (55%)
+- [x] C03 (100%)
+- [x] C04 (100%)
+- [x] C05 (80%)
+- [x] C06 (100%)
 - [ ] C07
 - [ ] C08
-- [ ] C09
+- [ ] C09 
 - [ ] C10
 - [ ] C11
 - [ ] C12
@@ -76,7 +76,7 @@ And inside each exercise you’ll typically find source files like:
 
 ### Shell Piscine
 - [ ] Shell00 (7/10)
-- [ ] Shell01 (5/8)
+- [x] Shell01 (5/8)
 
 ---
 
