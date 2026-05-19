@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/18 12:35:16 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/19 12:51:27 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/05/19 12:12:16 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/05/19 13:36:23 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+int	*ft_range(int min, int max)
 {
-	int	i;
+	int	*ptr;
+	int	cnt;
+	int	size;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strcpy(char *dest, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*ptr;
-
-	ptr = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (min >= max)
+		return (0);
+	size = max - min;
+	ptr = malloc(sizeof(int) * size);
 	if (ptr == NULL)
+	{
 		return (NULL);
-	ptr = ft_strcpy(ptr, src);
+	}
+	cnt = 0;
+	while (cnt < size)
+	{
+		ptr[cnt] = min + cnt;
+		cnt++;
+	}
 	return (ptr);
 }
