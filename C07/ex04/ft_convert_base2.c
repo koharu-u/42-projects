@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 15:02:06 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/05/25 15:03:49 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/05/26 09:03:57 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,4 @@ int	ft_atoi_base(char *str, char *base)
 		str++;
 	}
 	return (int_rtn * symbol);
-}
-
-void	ft_putnbr_base(int nbr, char *base)
-{
-	unsigned int	cnt_base;
-	long			mbr_long;
-	int				is_invalid;
-
-	cnt_base = 0;
-	mbr_long = nbr;
-	while (base[cnt_base])
-		cnt_base++;
-	is_invalid = detect_invalid(base, cnt_base);
-	if (is_invalid == 1)
-		return ;
-	if (nbr < 0)
-		mbr_long = -mbr_long;
 }
