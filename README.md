@@ -69,18 +69,18 @@ And inside each exercise you’ll typically find source files like:
 - [x] C04 (100%)
 - [x] C05 (80%)
 - [x] C06 (100%)
-- [ ] C07
-- [ ] C08
-- [ ] C09
-- [ ] C10
-- [ ] C11
-- [ ] C12
-- [ ] C13
+- [x] C07 (100%)
+- [x] C08 (100%)
+- [x] C09 (100%)
+- [ ] ~~C10 (skipped)~~
+- [ ] ~~C11 (skipped)~~
+- [ ] ~~C12 (skipped)~~
+- [ ] ~~C13 (skipped)~~
 
 ### Shell Piscine
 
-- [ ] Shell00 (7/10)
-- [x] Shell01 (5/8)
+- [x] Shell00 (70%)
+- [x] Shell01 (50%)
 
 ---
 
