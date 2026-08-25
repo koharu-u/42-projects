@@ -1,19 +1,19 @@
 #include <unistd.h>
 
 // Test library prototype
-int	ft_isalpha(char *str);
+int	ft_isalpha(int str);
 
 // Main test
 int	main(void)
 {
 	int	test_string;
 
-	test_string = '9';
+	test_string = 'a';
 	if (ft_isalpha(test_string))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	test_string = 'a';
+	test_string = '0';
 	if (!(ft_isalpha(test_string)))
 		write(1, "OK\n", 3);
 	else
@@ -28,7 +28,7 @@ int	main(void)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	test_string = '&';
+	test_string = '$';
 	if (!(ft_isalpha(test_string)))
 		write(1, "OK\n", 3);
 	else
