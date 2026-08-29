@@ -6,14 +6,16 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 10:06:01 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 10:33:18 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:51:01 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int alpha)
+int	ft_tolower(int c);
+
+int	ft_tolower(int c)
 {
-	if (alpha >= 65 && alpha <= 90)
-		return (alpha + 32);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
 	else
-		return (alpha);
+		return (c);
 }

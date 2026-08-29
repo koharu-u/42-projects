@@ -6,13 +6,15 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 22:09:01 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/25 22:23:30 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:45:25 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int str)
+int	ft_isdigit(int c);
+
+int	ft_isdigit(int c)
 {
-	if ((str >= 48) && (str <= 57))
+	if ((c >= 48) && (str <= 57))
 		return (1);
 	return (0);
 }

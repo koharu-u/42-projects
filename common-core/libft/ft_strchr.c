@@ -5,17 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 09:21:11 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 09:55:01 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/29 12:47:57 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/29 12:53:34 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-const char	*ft_strchr(const char *str, int chr)
+char	*ft_strchr(const char *s, int c);
+
+char	*ft_strchr(const char *s, int c)
 {
-	while (*str++)
+	while (*s++)
 	{
-		if (*str != chr)
-			return (str);
+		if (*s != c)
+			return (s);
 	}
 	return (0);
 }

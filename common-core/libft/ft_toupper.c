@@ -6,14 +6,16 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 10:33:43 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 13:15:47 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:51:35 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int alpha)
+int	ft_toupper(int c);
+
+int	ft_toupper(int c)
 {
-	if (alpha >= 97 && alpha <= 122)
-		return (alpha - 32);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
 	else
-		return (alpha);
+		return (c);
 }

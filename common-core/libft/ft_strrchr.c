@@ -6,26 +6,28 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 09:31:15 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 09:50:47 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:56:11 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-const char	*ft_strrchr(const char *str, int chr)
+char	*ft_strrchr(const char *s, int c);
+
+char	*ft_strrchr(const char *s, int c)
 {
 	int	pos;
 	int	dt_pos;
 
 	pos = 0;
 	dt_pos = -1;
-	while (str[pos])
+	while (s[pos])
 	{
-		if (str[pos] == chr)
+		if (s[pos] == c)
 			dt_pos = pos;
 		pos++;
 	}
-	if (str[pos] == chr)
-		return (str + dt_pos);
+	if (s[pos] == c)
+		return (s + dt_pos);
 	if (dt_pos != -1)
-		return (str + dt_pos);
+		return (s + dt_pos);
 	return (0);
 }

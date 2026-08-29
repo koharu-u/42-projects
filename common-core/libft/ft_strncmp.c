@@ -6,11 +6,13 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 13:08:17 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 18:03:17 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:52:47 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int	counter;
 

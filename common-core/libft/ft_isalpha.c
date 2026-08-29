@@ -6,13 +6,15 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 09:46:43 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/25 21:43:44 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:44:05 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int str)
+int	ft_isalpha(int c);
+
+int	ft_isalpha(int c)
 {
-	if (((str >= 65) && (str <= 90)) || ((str >= 97) && (str <= 122)))
+	if (((c >= 65) && (str <= 90)) || ((str >= 97) && (str <= 122)))
 		return (1);
 	return (0);
 }

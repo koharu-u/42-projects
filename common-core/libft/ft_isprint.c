@@ -6,13 +6,15 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 22:32:39 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/25 22:33:11 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/29 12:44:43 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int str)
+int	ft_isprint(int c);
+
+int	ft_isprint(int c)
 {
-	if ((str >= 32) && (str <= 126))
+	if ((c >= 32) && (str <= 126))
 		return (1);
 	return (0);
 }
