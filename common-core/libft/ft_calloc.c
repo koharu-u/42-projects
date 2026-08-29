@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/29 12:06:26 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 18:20:44 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/29 18:27:39 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/29 18:41:05 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr);
+void	*calloc(size_t nmemb, size_t size);
 
-int	ft_atoi(const char *nptr)
+void	*calloc(size_t nmemb, size_t size)
 {
-	int	symbol;
-	int	rtn_num;
+	void	*ptr;
+	size_t	total;
 
-	rtn_num = 0;
-	symbol = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		*nptr++;
-	if (*nptr == 45)
-		rtn_num = -rtn_num;
-	while (*nptr && (*nptr >= 9 && *nptr <= 13))
-		rtn_num = (rtn_num * 10) + (*nptr++ - '0');
-	return (rtn_num * symbol);
+	if (size != 0 && nmemb > (size_t)-1 / size)
+		return (NULL);
+	total = nmemb * size;
+	ptr = malloc(total) if (!ptr) return (NULL);
+	ft_bzero(ptr, total);
+	return (ptr);
 }

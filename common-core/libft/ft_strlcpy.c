@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/29 12:06:26 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 18:20:44 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/29 16:07:56 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/29 16:20:22 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-int	ft_atoi(const char *nptr)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	symbol;
-	int	rtn_num;
+	size_t	i;
 
-	rtn_num = 0;
-	symbol = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		*nptr++;
-	if (*nptr == 45)
-		rtn_num = -rtn_num;
-	while (*nptr && (*nptr >= 9 && *nptr <= 13))
-		rtn_num = (rtn_num * 10) + (*nptr++ - '0');
-	return (rtn_num * symbol);
+	i = 0;
+	if (size > 0)
+	{
+		while (i < size - 1 && *src)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
 }
