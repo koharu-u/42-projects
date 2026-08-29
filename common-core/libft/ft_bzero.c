@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 10:33:43 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 13:15:47 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/26 18:08:02 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/26 18:24:01 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int alpha)
+void	ft_bzero(void *b, unsigned long n)
 {
-	if (alpha >= 97 && alpha <= 122)
-		return (alpha - 32);
-	else
-		return (alpha);
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)b;
+	while (n--)
+	{
+		*ptr = 0;
+		ptr++;
+	}
 }

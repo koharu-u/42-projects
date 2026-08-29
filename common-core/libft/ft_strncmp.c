@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 10:33:43 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/26 13:15:47 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/26 13:08:17 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/26 18:03:17 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int alpha)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	if (alpha >= 97 && alpha <= 122)
-		return (alpha - 32);
-	else
-		return (alpha);
+	int	counter;
+
+	counter = 0;
+	if (n == 0)
+		return (0);
+	while ((counter < (n - 1)) && (s1[counter] == s2[counter] && (s1[counter])))
+		counter++;
+	return ((unsigned char)s1[counter] - (unsigned char)s2[counter]);
 }
