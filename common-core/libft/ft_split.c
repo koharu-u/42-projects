@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 08:40:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 15:46:21 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 15:49:03 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	word_counter(char *str, char *charset)
 	return (counter);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const *s, char *c)
 {
 	char	**rtnptr;
 	int		i;
