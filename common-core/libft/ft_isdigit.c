@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 22:09:01 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 12:45:25 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 09:30:28 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_isdigit(int c);
 
 int	ft_isdigit(int c)
 {
-	if ((c >= 48) && (str <= 57))
+	if ((c >= 48) && (c <= 57))
 		return (1);
 	return (0);
 }

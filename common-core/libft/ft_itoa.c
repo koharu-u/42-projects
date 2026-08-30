@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 15:36:11 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:10:55 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_itoa(int n)
 	char	*a;
 	int		idx;
 
-	malloc() if (n > 10)
+	malloc(); if (n > 10)
 	{
 	}
 }

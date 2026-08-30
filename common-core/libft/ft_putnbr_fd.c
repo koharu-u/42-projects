@@ -6,11 +6,9 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:12:05 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 14:46:25 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:18:52 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-void	ft_putnbr_fd(int n, int fd);
 
 void	ft_putnbr_fd(int n, int fd)
 {

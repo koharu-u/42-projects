@@ -6,11 +6,9 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 10:06:01 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 12:51:01 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:21:17 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_tolower(int c);
 
 int	ft_tolower(int c)
 {

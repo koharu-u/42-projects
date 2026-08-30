@@ -6,15 +6,13 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 22:23:54 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 12:44:27 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:09:15 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c);
-
 int	ft_isascii(int c)
 {
-	if ((c >= 0) && (str <= 127))
+	if ((c >= 0) && (c <= 127))
 		return (1);
 	return (0);
 }

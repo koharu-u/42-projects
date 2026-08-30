@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 18:08:02 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 12:40:37 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:09:21 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, size_t n);
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

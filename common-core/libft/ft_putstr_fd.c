@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:04:58 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 14:10:38 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:16:02 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr_fd(char *s, int fd);
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

@@ -6,18 +6,16 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 12:47:57 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/29 12:53:34 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 12:18:57 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-char	*ft_strchr(const char *s, int c);
 
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s++)
 	{
 		if (*s != c)
-			return (s);
+			return ((char *)s);
 	}
 	return (0);
 }
