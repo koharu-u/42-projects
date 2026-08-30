@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 11:40:35 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 12:15:25 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 14:17:11 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', 1);
+	ft_putchar_fd('\n', fd);
 }

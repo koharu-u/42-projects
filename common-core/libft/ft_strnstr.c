@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 22:13:39 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 12:38:33 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/30 15:02:05 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/30 15:11:39 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (((c >= 65) && (c <= 90)) || (((c >= 97) && (c <= 122)) || ((c >= 48)
-				&& (c <= 57))))
-		return (1);
-	return (0);
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i])
+	{
+		j = 0;
+		while ((little[j] && i + j < len) && (big[i + j] == little[j]))
+			j++;
+		if (little[j] == '\0')
+			return ((char *)big + i);
+		i++;
+	}
+	return (NULL);
 }

@@ -6,28 +6,26 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 09:31:15 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 12:19:42 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/08/30 14:10:53 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c);
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	pos;
-	int	dt_pos;
+	size_t	index;
 
-	pos = 0;
-	dt_pos = -1;
-	while (s[pos])
+	index = 0;
+	while (s[index] != '\0')
+		index++;
+	while (index > 0)
 	{
-		if (s[pos] == c)
-			dt_pos = pos;
-		pos++;
+		if (((unsigned char)s[index]) == (unsigned char)c)
+			return ((char *)&s[index]);
+		index--;
 	}
-	if (s[pos] == c)
-		return (s + dt_pos);
-	if (dt_pos != -1)
-		return (s + dt_pos);
+	if ((unsigned char)s[0] == (unsigned char)c)
+		return ((char *)&s[0]);
 	return (0);
 }

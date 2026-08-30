@@ -1,19 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 22:13:39 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 12:38:33 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/08/30 15:38:33 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/08/30 15:44:39 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+static char	*ft_strncpy(char *dest, char *str, int number)
 {
-	if (((c >= 65) && (c <= 90)) || (((c >= 97) && (c <= 122)) || ((c >= 48)
-				&& (c <= 57))))
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (str[i] && i < number)
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*ptr;
+	size_t	number;
+
+	number = ft_strlen(src);
+	ptr = malloc(sizeof(char) * (number + 1));
+	if (ptr == NULL)
+		return (NULL);
+	ptr = ft_strncpy(ptr, src, number);
+	return (ptr);
 }
