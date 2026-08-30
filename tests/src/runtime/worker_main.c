@@ -221,7 +221,8 @@ int	main(int argc, char **argv)
 	selected = NULL;
 	if (options.test_filter != NULL)
 		selected = registry_find(&registry, options.test_filter);
-	if (options.test_filter != NULL && selected == NULL)
+	if (options.test_filter != NULL && selected == NULL
+		&& !registry_has_group(&registry, options.test_filter))
 	{
 		(void)event_wire_send_error(options.event_fd, "requested test not found");
 		status = 2;

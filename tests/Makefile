@@ -26,6 +26,7 @@ HOST_SOURCES := \
 	src/runtime/worker_builder.c \
 	src/report/terminal.c \
 	modules/libft/module.c \
+	modules/libft/functions.c \
 	modules/libft/worker_build.c
 
 OBJ_DIR := .build/obj/host

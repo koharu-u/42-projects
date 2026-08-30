@@ -13,17 +13,19 @@
 # error "TESTER_SOURCE_ROOT must be defined by the tests Makefile"
 #endif
 
-void	worker_artifact_init(t_worker_artifact *artifact)
+void	worker_artifact_init(t_build_artifact *artifact)
 {
 	artifact->session_directory = NULL;
 	artifact->executable_path = NULL;
+	artifact->backend = BUILD_BACKEND_MAKE;
+	artifact->keep_temporary_files = false;
 }
 
-void	worker_artifact_destroy(t_worker_artifact *artifact)
+void	worker_artifact_destroy(t_build_artifact *artifact)
 {
-	if (artifact->executable_path != NULL)
+	if (!artifact->keep_temporary_files && artifact->executable_path != NULL)
 		(void)unlink(artifact->executable_path);
-	if (artifact->session_directory != NULL)
+	if (!artifact->keep_temporary_files && artifact->session_directory != NULL)
 		(void)rmdir(artifact->session_directory);
 	free(artifact->executable_path);
 	free(artifact->session_directory);
@@ -52,6 +54,8 @@ static char	*worker_target_path(const char *target, const char *name)
 	char	*path;
 	size_t	length;
 
+	if (name == NULL)
+		return (NULL);
 	length = strlen(target) + strlen(name) + 2;
 	path = malloc(length);
 	if (path != NULL)
@@ -66,8 +70,8 @@ static int	worker_ensure_directory(const char *path)
 	return (-1);
 }
 
-static int	worker_create_session(const char *worker_name,
-		t_worker_artifact *artifact)
+static int	worker_create_session(const t_worker_build_plan *plan,
+		t_build_artifact *artifact)
 {
 	char	*build_directory;
 	char	*sessions_directory;
@@ -90,29 +94,24 @@ static int	worker_create_session(const char *worker_name,
 	if (mkdtemp(template) == NULL)
 		return (free(template), -1);
 	artifact->session_directory = template;
-	length = strlen(template) + strlen(worker_name) + 2;
+	length = strlen(template) + strlen(plan->worker_name) + 2;
 	artifact->executable_path = malloc(length);
 	if (artifact->executable_path == NULL)
 		return (-1);
 	(void)snprintf(artifact->executable_path, length, "%s/%s", template,
-		worker_name);
+		plan->worker_name);
 	return (0);
 }
 
-static char	*worker_include_argument(const char *relative_path)
+static char	*worker_prefixed_argument(const char *prefix, const char *path)
 {
-	char	*path;
 	char	*argument;
 	size_t	length;
 
-	path = worker_root_path(relative_path);
-	if (path == NULL)
-		return (NULL);
-	length = strlen(path) + 3;
+	length = strlen(prefix) + strlen(path) + 1;
 	argument = malloc(length);
 	if (argument != NULL)
-		(void)snprintf(argument, length, "-I%s", path);
-	free(path);
+		(void)snprintf(argument, length, "%s%s", prefix, path);
 	return (argument);
 }
 
@@ -128,22 +127,49 @@ static void	worker_free_strings(char **strings, size_t count)
 	free(strings);
 }
 
-static char	**worker_resolve_paths(const char *const paths[], size_t count,
-		bool includes)
+static char	**worker_resolve_root_paths(const char *const paths[], size_t count)
 {
 	char	**resolved;
 	size_t	index;
 
+	if (count == 0)
+		return (NULL);
 	resolved = calloc(count, sizeof(*resolved));
 	if (resolved == NULL)
 		return (NULL);
 	index = 0;
 	while (index < count)
 	{
-		if (includes)
-			resolved[index] = worker_include_argument(paths[index]);
-		else
-			resolved[index] = worker_root_path(paths[index]);
+		resolved[index] = worker_root_path(paths[index]);
+		if (resolved[index] == NULL)
+			return (worker_free_strings(resolved, count), NULL);
+		index++;
+	}
+	return (resolved);
+}
+
+static char	**worker_prefixed_paths(const char *const paths[], size_t count,
+		const char *prefix, bool root_paths)
+{
+	char	**resolved;
+	char	*path;
+	size_t	index;
+
+	if (count == 0)
+		return (NULL);
+	resolved = calloc(count, sizeof(*resolved));
+	if (resolved == NULL)
+		return (NULL);
+	index = 0;
+	while (index < count)
+	{
+		path = (char *)paths[index];
+		if (root_paths)
+			path = worker_root_path(paths[index]);
+		if (path != NULL)
+			resolved[index] = worker_prefixed_argument(prefix, path);
+		if (root_paths)
+			free(path);
 		if (resolved[index] == NULL)
 			return (worker_free_strings(resolved, count), NULL);
 		index++;
@@ -169,15 +195,17 @@ static void	worker_take_process(t_check_result *check,
 }
 
 static char	**worker_compile_arguments(const t_worker_build_plan *plan,
-		char *compiler, char **sources, char **includes, char *target_artifact,
-		const t_worker_artifact *artifact)
+		char *compiler, char **sources, char **includes, char **external_includes,
+		char **defines, char *target_artifact, const t_build_artifact *artifact)
 {
 	char	**arguments;
 	size_t	count;
 	size_t	index;
 	size_t	item;
 
-	count = 11 + plan->source_count + plan->include_count;
+	count = 12 + plan->source_count + plan->include_count
+		+ plan->external_include_count + plan->target_source_count
+		+ plan->define_count;
 	arguments = calloc(count, sizeof(*arguments));
 	if (arguments == NULL)
 		return (NULL);
@@ -190,44 +218,65 @@ static char	**worker_compile_arguments(const t_worker_build_plan *plan,
 	arguments[index++] = "-Wextra";
 	arguments[index++] = "-Werror";
 	item = 0;
+	while (item < plan->define_count)
+		arguments[index++] = defines[item++];
+	item = 0;
 	while (item < plan->include_count)
 		arguments[index++] = includes[item++];
 	item = 0;
+	while (item < plan->external_include_count)
+		arguments[index++] = external_includes[item++];
+	item = 0;
 	while (item < plan->source_count)
 		arguments[index++] = sources[item++];
-	arguments[index++] = target_artifact;
+	item = 0;
+	while (item < plan->target_source_count)
+		arguments[index++] = (char *)plan->target_source_paths[item++];
+	if (target_artifact != NULL)
+		arguments[index++] = target_artifact;
 	arguments[index++] = "-o";
 	arguments[index++] = artifact->executable_path;
 	arguments[index] = NULL;
 	return (arguments);
 }
 
-static int	worker_run_compiler(const t_worker_build_plan *plan,
-		const char *target_path, const t_worker_artifact *artifact,
+static int	worker_run_compiler(const char *target_path,
+		const t_worker_build_plan *plan, const t_build_artifact *artifact,
 		t_check_result *check)
 {
 	char			*compiler;
 	char			**sources;
 	char			**includes;
+	char			**external_includes;
+	char			**defines;
 	char			*target_artifact;
 	char			**arguments;
 	t_process_result	process;
 	int				status;
 
 	compiler = path_find_executable(getenv("CC") != NULL ? getenv("CC") : "cc");
-	sources = worker_resolve_paths(plan->source_paths, plan->source_count, false);
-	includes = worker_resolve_paths(plan->include_paths, plan->include_count, true);
-	target_artifact = worker_target_path(target_path,
-			plan->target_artifact_name);
+	sources = worker_resolve_root_paths(plan->source_paths, plan->source_count);
+	includes = worker_prefixed_paths(plan->include_paths, plan->include_count,
+			"-I", true);
+	external_includes = worker_prefixed_paths(plan->external_include_paths,
+			plan->external_include_count, "-I", false);
+	defines = worker_prefixed_paths(plan->defines, plan->define_count, "-D", false);
+	target_artifact = NULL;
+	if (plan->target_artifact_name != NULL)
+		target_artifact = worker_target_path(target_path, plan->target_artifact_name);
 	arguments = NULL;
-	if (compiler != NULL && sources != NULL && includes != NULL
-		&& target_artifact != NULL)
+	if (compiler != NULL && sources != NULL
+		&& (plan->include_count == 0 || includes != NULL)
+		&& (plan->external_include_count == 0 || external_includes != NULL)
+		&& (plan->define_count == 0 || defines != NULL)
+		&& (plan->target_artifact_name == NULL || target_artifact != NULL))
 		arguments = worker_compile_arguments(plan, compiler, sources, includes,
-				target_artifact, artifact);
+				external_includes, defines, target_artifact, artifact);
 	if (arguments == NULL)
 		return (free(compiler), worker_free_strings(sources, plan->source_count),
 			worker_free_strings(includes, plan->include_count),
-			free(target_artifact), -1);
+			worker_free_strings(external_includes, plan->external_include_count),
+			worker_free_strings(defines, plan->define_count), free(target_artifact), -1);
 	process_result_init(&process);
 	status = process_run_capture((const char *const *)arguments,
 			TESTER_BUILD_TIMEOUT_MS, TESTER_CAPTURE_LIMIT, &process);
@@ -244,37 +293,39 @@ static int	worker_run_compiler(const t_worker_build_plan *plan,
 				"tester failed while invoking the worker compiler");
 		else
 			(void)check_result_set_reason(check,
-				"failed to link the project test worker");
+				"failed to compile the test worker");
 	}
 	process_result_destroy(&process);
 	free(arguments);
 	free(compiler);
 	worker_free_strings(sources, plan->source_count);
 	worker_free_strings(includes, plan->include_count);
+	worker_free_strings(external_includes, plan->external_include_count);
+	worker_free_strings(defines, plan->define_count);
 	free(target_artifact);
 	return (status);
 }
 
 int	worker_build_from_plan(const char *target_path,
-		const t_worker_build_plan *plan, t_worker_artifact *artifact,
+		const t_worker_build_plan *plan, t_build_artifact *artifact,
 		t_check_result *result)
 {
 	int	status;
 
-	check_result_init(result, "Harness");
+	check_result_init(result, plan->check_name != NULL ? plan->check_name : "Harness");
 	worker_artifact_init(artifact);
-	if (result->name == NULL || worker_create_session(plan->worker_name,
-			artifact) != 0)
+	artifact->backend = plan->backend;
+	artifact->keep_temporary_files = plan->keep_temporary_files;
+	if (result->name == NULL || worker_create_session(plan, artifact) != 0)
 	{
 		result->status = CHECK_UNKNOWN;
 		(void)check_result_set_reason(result,
 			"could not create a temporary worker directory");
 		return (-1);
 	}
-	status = worker_run_compiler(plan, target_path, artifact, result);
+	status = worker_run_compiler(target_path, plan, artifact, result);
 	if (status != 0 && result->reason == NULL)
 		(void)check_result_set_reason(result,
 			"could not prepare the project test worker");
 	return (status);
 }
-

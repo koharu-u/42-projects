@@ -106,6 +106,8 @@ void	terminal_reporter_consume(void *user_data, const t_event *event)
 		(void)printf("42tester %s\n", TESTER_VERSION);
 		(void)printf("Project: %s\n", event->project_path);
 		(void)printf("Module: %s\n", event->project_name);
+		(void)printf("Build mode: %s\n", event->build_backend == BUILD_BACKEND_DIRECT
+			? "DIRECT / PARTIAL" : "PROJECT");
 		(void)printf("Seed: %llu\n\n",
 			(unsigned long long)event->global_seed);
 	}

@@ -1,4 +1,5 @@
 #include "libft_api.h"
+#include "registry.h"
 #include "test_case.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -157,4 +158,28 @@ int	libft_test_strlen_random(t_test_context *context)
 	}
 	free(input);
 	return (TEST_CALLBACK_PASS);
+}
+
+int	libft_register_ft_strlen_tests(t_test_registry *registry)
+{
+	static const t_test_case	tests[] = {
+	{"ft_strlen.basic", "ft_strlen", TEST_BASIC, 1000, 1,
+		libft_test_strlen_basic},
+	{"ft_strlen.empty", "ft_strlen", TEST_EDGE, 1000, 1,
+		libft_test_strlen_empty},
+	{"ft_strlen.boundary", "ft_strlen", TEST_BOUNDARY, 1000, 1,
+		libft_test_strlen_boundary},
+	{"ft_strlen.random", "ft_strlen", TEST_RANDOM, 1000, 100,
+		libft_test_strlen_random}
+	};
+	size_t	index;
+
+	index = 0;
+	while (index < sizeof(tests) / sizeof(tests[0]))
+	{
+		if (registry_add(registry, &tests[index]) != 0)
+			return (-1);
+		index++;
+	}
+	return (0);
 }

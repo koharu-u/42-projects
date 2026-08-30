@@ -14,7 +14,8 @@ static bool	scheduler_matches(const t_scheduler *scheduler,
 		const t_test_case *test)
 {
 	return (scheduler->options.test_filter == NULL
-		|| strcmp(scheduler->options.test_filter, test->id) == 0);
+		|| strcmp(scheduler->options.test_filter, test->id) == 0
+		|| strcmp(scheduler->options.test_filter, test->group) == 0);
 }
 
 static uint64_t	scheduler_random_iteration(t_scheduler *scheduler,
@@ -86,4 +87,3 @@ bool	scheduler_next(t_scheduler *scheduler, t_test_invocation *invocation)
 	}
 	return (false);
 }
-

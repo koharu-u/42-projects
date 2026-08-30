@@ -61,6 +61,20 @@ const t_test_case	*registry_find(const t_test_registry *registry,
 	return (NULL);
 }
 
+bool	registry_has_group(const t_test_registry *registry, const char *group)
+{
+	size_t	index;
+
+	index = 0;
+	while (index < registry->count)
+	{
+		if (strcmp(registry->items[index].group, group) == 0)
+			return (true);
+		index++;
+	}
+	return (false);
+}
+
 const t_test_case	*registry_at(const t_test_registry *registry, size_t index)
 {
 	if (index >= registry->count)
@@ -78,4 +92,3 @@ void	registry_destroy(t_test_registry *registry)
 	free(registry->items);
 	memset(registry, 0, sizeof(*registry));
 }
-

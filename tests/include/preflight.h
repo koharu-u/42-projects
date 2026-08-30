@@ -10,7 +10,9 @@ typedef enum e_check_status
 	CHECK_PASS,
 	CHECK_FAIL,
 	CHECK_UNKNOWN,
-	CHECK_SKIP
+	CHECK_SKIP,
+	CHECK_MISSING,
+	CHECK_BLOCKED
 }   t_check_status;
 
 typedef struct s_check_result
@@ -38,4 +40,3 @@ int		preflight_run_norminette(const char *target_path,
 				t_check_result *result);
 
 #endif
-

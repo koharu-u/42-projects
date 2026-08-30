@@ -1,7 +1,7 @@
 #ifndef EVENT_H
 # define EVENT_H
 
-# include "preflight.h"
+# include "module.h"
 # include "test_case.h"
 # include "test_result.h"
 # include "tester.h"
@@ -25,6 +25,7 @@ typedef struct s_event
 	t_event_type			type;
 	const char			*project_path;
 	const char			*project_name;
+	t_build_backend		build_backend;
 	uint64_t			global_seed;
 	const t_check_result		*check;
 	const t_test_invocation	*invocation;
@@ -44,4 +45,3 @@ typedef struct s_event_sink
 void	event_emit(const t_event_sink *sink, const t_event *event);
 
 #endif
-

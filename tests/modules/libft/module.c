@@ -37,6 +37,8 @@ static bool	libft_probe(const char *target_path)
 {
 	char	*source;
 	char	*archive;
+	const char	*name;
+	size_t	index;
 	bool	found;
 
 	source = libft_join_path(target_path, "ft_strlen.c");
@@ -47,6 +49,15 @@ static bool	libft_probe(const char *target_path)
 		found = libft_path_is_file(source) || libft_path_is_file(archive);
 	free(source);
 	free(archive);
+	index = 0;
+	while (!found && index < libft_function_count())
+	{
+		name = libft_function_source_name(libft_function_name_at(index++));
+		source = libft_join_path(target_path, name);
+		if (source != NULL)
+			found = libft_path_is_file(source);
+		free(source);
+	}
 	return (found);
 }
 
@@ -176,6 +187,9 @@ const t_project_module	g_libft_module = {
 	.name = "libft",
 	.probe = libft_probe,
 	.build = libft_build,
-	.build_worker = libft_build_worker
+	.build_worker = libft_build_worker,
+	.function_count = libft_function_count,
+	.function_name_at = libft_function_name_at,
+	.function_source_name = libft_function_source_name,
+	.function_has_tests = libft_function_has_tests
 };
-

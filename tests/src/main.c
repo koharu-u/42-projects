@@ -11,8 +11,14 @@
 static void	print_usage(const char *program)
 {
 	(void)printf("Usage: %s [options] <project-path>\n", program);
+	(void)printf("       %s --source <file.c> --function <name> [options]\n",
+		program);
 	(void)printf("\nOptions:\n");
 	(void)printf("  --project libft       Select the Libft module\n");
+	(void)printf("  --source FILE         Directly compile one C source file\n");
+	(void)printf("  --function NAME       Select a Libft function\n");
+	(void)printf("  --partial             Test available Libft sources without make\n");
+	(void)printf("  --keep-temp           Keep the temporary direct-build worker\n");
 	(void)printf("  --test ID             Run one registered test\n");
 	(void)printf("  --seed N              Set the deterministic global seed\n");
 	(void)printf("  --iterations N        Random iterations (default: %u)\n",
@@ -90,12 +96,28 @@ static int	parse_option(int argc, char **argv, int *index,
 		(*index)++;
 		return (0);
 	}
+	if (strcmp(name, "--partial") == 0)
+	{
+		config->partial = true;
+		(*index)++;
+		return (0);
+	}
+	if (strcmp(name, "--keep-temp") == 0)
+	{
+		config->keep_temp = true;
+		(*index)++;
+		return (0);
+	}
 	if (option_value(argc, argv, index, &value) != 0)
 		return (-1);
 	if (strcmp(name, "--project") == 0)
 		config->project_name = value;
 	else if (strcmp(name, "--test") == 0)
 		config->test_filter = value;
+	else if (strcmp(name, "--source") == 0)
+		config->source_path = value;
+	else if (strcmp(name, "--function") == 0)
+		config->function_name = value;
 	else
 		return (parse_numeric_option(name, value, config));
 	return (0);
@@ -124,7 +146,10 @@ static int	parse_arguments(int argc, char **argv, t_run_config *config)
 			config->target_path = argv[index++];
 		}
 	}
-	if (config->target_path == NULL
+	if ((config->target_path == NULL && config->source_path == NULL)
+		|| (config->target_path != NULL && config->source_path != NULL)
+		|| (config->source_path != NULL && config->function_name == NULL)
+		|| (config->partial && config->target_path == NULL)
 		|| (config->has_iteration && config->test_filter == NULL))
 		return (-1);
 	return (0);

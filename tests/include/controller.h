@@ -8,13 +8,17 @@
 typedef struct s_run_config
 {
 	const char	*target_path;
+	const char	*source_path;
 	const char	*project_name;
 	const char	*test_filter;
+	const char	*function_name;
 	uint64_t	seed;
 	uint32_t	random_iterations;
 	uint32_t	timeout_override_ms;
 	bool		seed_was_set;
 	bool		no_ui;
+	bool		partial;
+	bool		keep_temp;
 	bool		has_iteration;
 	uint64_t	iteration;
 }   t_run_config;
@@ -22,4 +26,3 @@ typedef struct s_run_config
 int	controller_run(const t_run_config *config, const t_event_sink *sink);
 
 #endif
-

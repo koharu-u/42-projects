@@ -3,16 +3,16 @@
 `42tester` is developer tooling for exercising 42 C projects. It lives outside
 submitted projects and never rewrites student source files.
 
-Phase 1 supports Libft and exactly these registered tests:
+Phase 1 supports Libft. The currently registered behavioural tests cover:
 
 - `ft_strlen.basic`
 - `ft_strlen.empty`
 - `ft_strlen.boundary`
 - `ft_strlen.random`
+- basic checks for `ft_isalpha`, `ft_isdigit`, `ft_memset`, and `ft_memcpy`
 
 The ncurses UI, JSON reports, symbol checks, Valgrind, malloc injection,
-mutation fuzzing, shrinking, and additional Libft functions are intentionally
-deferred until later phases.
+mutation fuzzing, and shrinking are intentionally deferred until later phases.
 
 ## Build and run
 
@@ -23,8 +23,9 @@ make -C tests
 ./tests/bin/42tester ./common-core/libft --no-ui
 ```
 
-The target must have a Makefile with a working `clean` target and a default
-build that creates `libft.a`. The pipeline runs Norminette first, then invokes:
+The default project mode requires a Makefile with a working `clean` target and
+a default build that creates `libft.a`. The pipeline runs Norminette first,
+then invokes:
 
 ```text
 make -C <target> clean
@@ -34,6 +35,33 @@ make -C <target>
 Norminette is resolved through `PATH`. If it is absent, its status is
 `UNKNOWN`, not `FAIL`, and the clean build continues. A failed build stops
 runtime testing.
+
+## Direct sources and partial projects
+
+Direct source mode never invokes `make` and does not need `libft.a` or the
+rest of Libft. It links the chosen source, its metadata-declared dependencies,
+and the smallest compatible test worker using `-Wall -Wextra -Werror`.
+
+```sh
+./tests/bin/42tester \
+    --source ./common-core/libft/ft_strlen.c \
+    --function ft_strlen
+```
+
+Use partial mode to scan known Libft filenames without trying the project
+Makefile. Present functions are compiled independently; absent functions are
+reported as `MISSING`, and a present source with an unavailable declared
+dependency is reported as `BLOCKED` rather than failed.
+
+```sh
+./tests/bin/42tester --project libft ./common-core/libft --partial
+./tests/bin/42tester --project libft ./common-core/libft \
+    --function ft_memset --partial
+```
+
+The run header identifies `Build mode: PROJECT` or
+`Build mode: DIRECT / PARTIAL`. Temporary workers are removed after each run;
+pass `--keep-temp` to retain them and print their location.
 
 ## Deterministic random tests and replay
 
@@ -63,6 +91,10 @@ Useful Phase 1 options:
 
 ```text
 --project libft
+--source <file.c>
+--function <libft-function>
+--partial
+--keep-temp
 --test <stable-test-id>
 --seed <uint64>
 --iterations <positive-count>
@@ -94,4 +126,3 @@ prevent later iterations from running.
 
 Norminette failure affects the final exit status but does not stop the remaining
 pipeline.
-

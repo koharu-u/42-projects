@@ -19,9 +19,10 @@ int				registry_add(t_test_registry *registry,
 void				registry_freeze(t_test_registry *registry);
 const t_test_case	*registry_find(const t_test_registry *registry,
 						const char *test_id);
+bool				registry_has_group(const t_test_registry *registry,
+						const char *group);
 const t_test_case	*registry_at(const t_test_registry *registry, size_t index);
 size_t				registry_count(const t_test_registry *registry);
 void				registry_destroy(t_test_registry *registry);
 
 #endif
-

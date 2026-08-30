@@ -39,6 +39,9 @@ const char	*check_status_name(t_check_status status)
 		return ("FAIL");
 	if (status == CHECK_SKIP)
 		return ("SKIP");
+	if (status == CHECK_MISSING)
+		return ("MISSING");
+	if (status == CHECK_BLOCKED)
+		return ("BLOCKED");
 	return ("UNKNOWN");
 }
-
