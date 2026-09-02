@@ -6,13 +6,13 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 08:40:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 15:49:03 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/02 10:02:10 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	is_charset(char chr, char *charset)
+static int	is_charset(char chr, const char *charset)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	is_charset(char chr, char *charset)
 	return (0);
 }
 
-int	word_counter(char *str, char *charset)
+static int	word_counter(char const *str, char *charset)
 {
 	int	counter;
 	int	i;
@@ -43,31 +43,55 @@ int	word_counter(char *str, char *charset)
 	return (counter);
 }
 
-char	**ft_split(char const *s, char *c)
+static void	free_split(char **split, int count)
 {
-	char	**rtnptr;
-	int		i;
-	int		j;
-	int		wcount;
+	while (count > 0)
+	{
+		count--;
+		free(split[count]);
+	}
+	free(split);
+}
+
+static int	fill_split(char **rtnptr, const char *s, char *c)
+{
+	int	i;
+	int	j;
+	int	wcount;
 
 	i = 0;
 	j = 0;
-	rtnptr = malloc(sizeof(char *) * (word_counter(str, charset) + 1));
-	if (rtnptr == NULL)
-		return (NULL);
-	while (str[i])
+	while (s[i])
 	{
-		while (str[i] && is_charset(str[i], charset) == 1)
+		while (s[i] && is_charset(s[i], c) == 1)
 			i++;
-		if (str[i] == '\0')
+		if (s[i] == '\0')
 			break ;
 		wcount = 0;
-		while (str[i + wcount] && is_charset(str[i + wcount], charset) == 0)
+		while (s[i + wcount] && is_charset(s[i + wcount], c) == 0)
 			wcount++;
-		rtnptr[j] = ft_strdup(&str[i]);
-		j++;
+		rtnptr[j++] = ft_substr(s, i, wcount);
+		if (rtnptr[j - 1] == NULL)
+		{
+			free_split(rtnptr, j - 1);
+			return (0);
+		}
 		i += wcount;
 	}
-	rtnptr[j] = 0;
+	rtnptr[j] = NULL;
+	return (1);
+}
+
+char	**ft_split(const char *s, char *c)
+{
+	char	**rtnptr;
+
+	if (s == NULL || c == NULL)
+		return (NULL);
+	rtnptr = malloc(sizeof(char *) * (word_counter(s, c) + 1));
+	if (rtnptr == NULL)
+		return (NULL);
+	if (fill_split(rtnptr, s, c) == 0)
+		return (NULL);
 	return (rtnptr);
 }

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/29 18:27:39 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/02 16:32:18 by kpiwan           ###   ########.fr       */
+/*   Created: 2026/09/02 16:34:03 by kpiwan            #+#    #+#             */
+/*   Updated: 2026/09/02 16:44:43 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#import "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void	*ptr;
-	size_t	total;
+	size_t				i;
+	const unsigned char	*chr_src;
+	unsigned char		*chr_dest;
 
-	if (size != 0 && nmemb > (size_t)-1 / size)
-		return (NULL);
-	total = nmemb * size;
-	ptr = malloc(total);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, total);
-	return (ptr);
+	i = 0;
+	chr_dest = (unsigned char *)dest;
+	chr_src = (const unsigned char *)src;
+	while (i < n)
+	{
+		chr_dest[i] = chr_src[i];
+		i++;
+	}
+	return (dest);
 }
