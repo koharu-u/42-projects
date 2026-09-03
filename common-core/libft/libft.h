@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 12:03:07 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/03 11:46:20 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/03 22:00:54 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
