@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:38:33 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/01 11:37:03 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/04 14:03:01 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_strncpy(char *dest, const char *str, size_t number)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < number)
