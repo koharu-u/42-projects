@@ -6,11 +6,9 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 22:09:01 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 09:30:28 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/04 14:32:42 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_isdigit(int c);
 
 int	ft_isdigit(int c)
 {
