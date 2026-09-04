@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 16:34:03 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/02 16:44:43 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/04 14:23:41 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#import "libft.h"
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

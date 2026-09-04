@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:30:18 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/01 13:23:38 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/04 14:23:22 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#import "libft.h"
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
