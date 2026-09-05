@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:02:05 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 15:11:39 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/05 17:12:02 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (little[0] == '\0')
 		return ((char *)big);
-	while (big[i])
+	while (i < len && big[i])
 	{
 		j = 0;
 		while ((little[j] && i + j < len) && (big[i + j] == little[j]))
