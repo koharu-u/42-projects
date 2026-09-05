@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 18:08:02 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 12:38:26 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/05 15:06:06 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)s;
-	while (n--)
-	{
-		*ptr = 0;
-		ptr++;
-	}
+	ft_memset(s, 0, n);
 }
