@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 13:08:19 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/08/30 14:37:58 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/05 15:40:33 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (*ptr == (unsigned char)c)
 		{
-			return ((void *)s);
+			return ((void *)ptr);
 		}
-		s++;
 		ptr++;
 		i_n++;
 	}
