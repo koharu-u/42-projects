@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 20:36:42 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/04 21:10:32 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/05 13:03:10 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ unsigned int	ft_lstsize(t_list *lst)
 
 	counter = 0;
 	ptr = lst;
-	while (ptr->next != NULL)
+	while (ptr != NULL)
 	{
 		counter++;
-		ptr = lst->next;
+		ptr = ptr->next;
 	}
 	return (counter);
 }
