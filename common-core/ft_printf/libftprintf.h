@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 08:41:18 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/15 22:42:10 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/16 13:50:46 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
 void	ft_putnbr_base(int nbr, char *base);
+int		ft_unumpnt(unsigned int n);
 
 #endif
