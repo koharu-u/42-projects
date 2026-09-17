@@ -6,7 +6,7 @@
 #    By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/29 15:29:59 by kpiwan            #+#    #+#              #
-#    Updated: 2026/09/17 21:57:07 by kpiwan           ###   ########.fr        #
+#    Updated: 2026/09/17 22:20:27 by kpiwan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ DEST = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c libft.h
+%.o: %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(DEST)
