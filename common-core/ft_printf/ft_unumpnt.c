@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/16 17:19:48 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 21:52:30 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	int_counter(unsigned long n)
 {

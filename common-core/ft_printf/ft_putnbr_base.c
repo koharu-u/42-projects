@@ -6,17 +6,22 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:20:32 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/15 22:42:01 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 21:52:45 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static void	print_nb(long nmbr, char *bs, int len)
+static int	print_nb(uintptr_t nmbr, char *bs, int len)
 {
-	if (nmbr >= len)
-		print_nb(nmbr / len, bs, len);
+	int	count;
+
+	count = 0;
+	if (nmbr >= (uintptr_t)len)
+		count += print_nb(nmbr / len, bs, len);
 	write(1, &bs[nmbr % len], 1);
+	count++;
+	return (count);
 }
 
 static int	detect_invalid(char *base, int cnt_base)
@@ -47,23 +52,16 @@ static int	detect_invalid(char *base, int cnt_base)
 	return (0);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(uintptr_t nbr, char *base)
 {
 	unsigned int	cnt_base;
-	long			mbr_long;
 	int				is_invalid;
 
 	cnt_base = 0;
-	mbr_long = nbr;
 	while (base[cnt_base])
 		cnt_base++;
 	is_invalid = detect_invalid(base, cnt_base);
 	if (is_invalid == 1)
-		return ;
-	if (nbr < 0)
-	{
-		mbr_long = -mbr_long;
-		write(1, "-", 1);
-	}
-	print_nb(mbr_long, base, cnt_base);
+		return (0);
+	return (print_nb(nbr, base, cnt_base));
 }

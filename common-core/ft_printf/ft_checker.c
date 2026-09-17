@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 08:39:46 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/15 14:35:02 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 21:54:42 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 // -1 is UNKNOWN/ERROR
 //  0 is INT/DECIMAL

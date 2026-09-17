@@ -6,82 +6,84 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 08:39:46 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/16 14:08:39 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 22:05:12 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
+
+static int	ft_handle_text(int type, va_list *ap)
+{
+	char	*s;
+
+	if (type == 7)
+	{
+		ft_putchar_fd('%', 1);
+		return (1);
+	}
+	if (type == 1)
+	{
+		ft_putchar_fd((char)va_arg(*ap, int), 1);
+		return (1);
+	}
+	s = va_arg(*ap, char *);
+	if (!s)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	ft_putstr_fd(s, 1);
+	return (ft_strlen(s));
+}
+
+static int	ft_handle_number(int type, va_list *ap)
+{
+	if (type == 0)
+		return (ft_numpnt(va_arg(*ap, int)));
+	if (type == 3)
+		return (ft_pntpnt(va_arg(*ap, void *)));
+	if (type == 4)
+		return (ft_unumpnt(va_arg(*ap, unsigned int)));
+	if (type == 5)
+		return (ft_putnbr_base(va_arg(*ap, unsigned int), "0123456789abcdef"));
+	if (type == 6)
+		return (ft_putnbr_base(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
+	return (0);
+}
+
+static int	ft_handle_format(const char *format, size_t i, va_list *ap)
+{
+	int	type;
+
+	type = ft_checker(format, i);
+	if (type == 1 || type == 2 || type == 7)
+		return (ft_handle_text(type, ap));
+	return (ft_handle_number(type, ap));
+}
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	size_t	i_pos;
-	size_t	len_print;
-	char	c;
-	char	*s;
+	size_t	i;
+	int		len;
 
-	i_pos = 0;
-	len_print = 0;
+	i = 0;
+	len = 0;
 	va_start(ap, format);
-	while (format[i_pos])
+	while (format[i])
 	{
-		if (format[i_pos] == '%')
+		if (format[i] == '%')
 		{
-			if (ft_checker(format, i_pos) == 7)
-			{
-				ft_putchar_fd('%', 1);
-				len_print++;
-				i_pos++;
-			}
-			else if (ft_checker(format, i_pos) == 0)
-			{
-				len_print += ft_numpnt(va_arg(ap, int));
-				i_pos++;
-			}
-			else if (ft_checker(format, i_pos) == 1)
-			{
-				c = (char)va_arg(ap, int);
-				ft_putchar_fd(c, 1);
-				len_print++;
-				i_pos++;
-			}
-			else if (ft_checker(format, i_pos) == 2)
-			{
-				s = va_arg(ap, char *);
-				len_print = ft_strlen(s);
-				ft_putstr_fd(s, 1);
-				i_pos++;
-			}
-			else if (ft_checker(format, i_pos) == 4)
-			{
-				len_print += ft_unumpnt(va_arg(ap, unsigned int));
-				i_pos++;
-			}
+			len += ft_handle_format(format, i, &ap);
+			i++;
 		}
 		else
 		{
-			ft_putchar_fd(format[i_pos], 1);
-			len_print++;
+			ft_putchar_fd(format[i], 1);
+			len++;
 		}
-		i_pos++;
+		i++;
 	}
 	va_end(ap);
-	return ((int)len_print);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	int	counter;
-
-	counter = ft_printf("SIX SEVEN is %i%% or %d?\n", 67, 69);
-	ft_printf("[TEST] Expected: 24, got %d\n", counter);
-	counter = ft_printf("EDGE CASE: % \n");
-	ft_printf("[TEST] Expected: 24, got %d\n", counter);
-	counter = ft_printf("%u\n", -1);
-	ft_printf("[TEST] Expected: 11, got %d\n", counter);
-	counter = ft_printf("%s\n", "HEHEHE");
-	ft_printf("[TEST] Expected: 7, got %d\n", counter);
-	return (0);
+	return (len);
 }

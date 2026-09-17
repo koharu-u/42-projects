@@ -6,7 +6,7 @@
 #    By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/29 15:29:59 by kpiwan            #+#    #+#              #
-#    Updated: 2026/09/16 14:09:55 by kpiwan           ###   ########.fr        #
+#    Updated: 2026/09/17 21:57:07 by kpiwan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS =  ft_checker.c \
 				ft_putnbr_base.c  \
 				ft_putstr_fd.c  \
 				ft_strlen.c  \
-				ft_unumpnt.c
+				ft_unumpnt.c \
+				ft_pntpnt.c
 
 DEST = $(SRCS:.c=.o)
 

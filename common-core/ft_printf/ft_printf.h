@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 08:41:18 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/16 13:50:46 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 21:53:52 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -23,7 +24,8 @@ int		ft_numpnt(int n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
-void	ft_putnbr_base(int nbr, char *base);
 int		ft_unumpnt(unsigned int n);
+int		ft_putnbr_base(uintptr_t nbr, char *base);
+int		ft_pntpnt(void *ptr);
 
 #endif

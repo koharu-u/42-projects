@@ -6,11 +6,11 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/15 15:05:49 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 21:54:28 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	int_counter(int n)
 {
@@ -65,6 +65,8 @@ int	ft_numpnt(int n)
 	nb = n;
 	len = int_counter(nb);
 	str = ft_itoa(n, len);
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		ft_putchar_fd(str[i++], 1);
