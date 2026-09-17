@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 08:39:46 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/17 22:05:12 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/17 22:23:37 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1])
 		{
 			len += ft_handle_format(format, i, &ap);
 			i++;
