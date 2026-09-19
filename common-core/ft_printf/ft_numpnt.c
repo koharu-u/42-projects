@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/17 21:54:28 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/19 10:48:35 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,14 @@ int	ft_numpnt(int n)
 		return (0);
 	i = 0;
 	while (str[i])
-		ft_putchar_fd(str[i++], 1);
+	{
+		if (ft_putchar_fd(str[i], 1) == -1)
+		{
+			free(str);
+			return (-1);
+		}
+		i++;
+	}
 	free(str);
 	return (len);
 }

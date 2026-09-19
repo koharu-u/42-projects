@@ -6,17 +6,13 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:04:58 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/17 21:52:41 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/19 11:44:23 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
+	return (write(fd, s, ft_strlen(s)));
 }

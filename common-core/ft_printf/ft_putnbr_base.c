@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 22:20:32 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/17 21:52:45 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/19 11:44:52 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 static int	print_nb(uintptr_t nmbr, char *bs, int len)
 {
 	int	count;
+	int	ret;
 
 	count = 0;
 	if (nmbr >= (uintptr_t)len)
-		count += print_nb(nmbr / len, bs, len);
-	write(1, &bs[nmbr % len], 1);
-	count++;
-	return (count);
+	{
+		ret = print_nb(nmbr / len, bs, len);
+		if (ret == -1)
+			return (-1);
+		count += ret;
+	}
+	if (write(1, &bs[nmbr % len], 1) == -1)
+		return (-1);
+	return (count + 1);
 }
 
 static int	detect_invalid(char *base, int cnt_base)

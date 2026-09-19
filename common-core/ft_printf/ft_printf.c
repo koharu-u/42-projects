@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 08:39:46 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/17 22:23:37 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/19 11:02:21 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,25 @@ static int	ft_handle_text(int type, va_list *ap)
 
 	if (type == 7)
 	{
-		ft_putchar_fd('%', 1);
+		if (ft_putchar_fd('%', 1) == -1)
+			return (-1);
 		return (1);
 	}
 	if (type == 1)
 	{
-		ft_putchar_fd((char)va_arg(*ap, int), 1);
+		if (ft_putchar_fd((char)va_arg(*ap, int), 1) == -1)
+			return (-1);
 		return (1);
 	}
 	s = va_arg(*ap, char *);
 	if (!s)
 	{
-		ft_putstr_fd("(null)", 1);
+		if (ft_putstr_fd("(null)", 1) == -1)
+			return (-1);
 		return (6);
 	}
-	ft_putstr_fd(s, 1);
+	if (ft_putstr_fd(s, 1) == -1)
+		return (-1);
 	return (ft_strlen(s));
 }
 
@@ -66,6 +70,7 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	size_t	i;
 	int		len;
+	int		wri;
 
 	i = 0;
 	len = 0;
@@ -74,14 +79,14 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
-			len += ft_handle_format(format, i, &ap);
+			wri = ft_handle_format(format, i, &ap);
 			i++;
 		}
 		else
-		{
-			ft_putchar_fd(format[i], 1);
-			len++;
-		}
+			wri = ft_putchar_fd(format[i], 1);
+		if (wri == -1)
+			return (va_end(ap), -1);
+		len += wri;
 		i++;
 	}
 	va_end(ap);
