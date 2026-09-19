@@ -6,7 +6,7 @@
 /*   By: kpiwan <kpiwan@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:36 by kpiwan            #+#    #+#             */
-/*   Updated: 2026/09/19 10:49:09 by kpiwan           ###   ########.fr       */
+/*   Updated: 2026/09/19 16:51:57 by kpiwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_unumpnt(unsigned int n)
 	len = int_counter(nb);
 	str = ft_itoa(nb, len);
 	if (!str)
-		return (0);
+		return (-1);
 	i = 0;
 	while (str[i])
 	{
