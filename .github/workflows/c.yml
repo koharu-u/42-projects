@@ -1,0 +1,43 @@
+name: C CI
+
+on:
+  push:
+    paths:
+      - '**/*.c'
+      - '**/*.h'
+      - '**/Makefile'
+      - '.github/workflows/c.yml'
+  pull_request:
+    paths:
+      - '**/*.c'
+      - '**/*.h'
+      - '**/Makefile'
+      - '.github/workflows/c.yml'
+
+jobs:
+  norminette:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Norminette
+        run: python3 -m pip install --disable-pip-version-check norminette
+      - name: Check tracked C files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git ls-files -z -- '*.c' '*.h' | xargs -0 -r norminette
+
+  ft_printf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build ft_printf
+        working-directory: common-core/ft_printf
+        shell: bash
+        run: |
+          set -euo pipefail
+          make fclean
+          make
+          make
+          make --question
+          make re
