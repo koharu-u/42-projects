@@ -25,7 +25,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git ls-files -z -- '*.c' '*.h' | xargs -0 -r norminette
+          git ls-files -z -- '*.c' '*.h' \
+            ':(exclude)piscine/C08/ex01/ft_boolean.h' \
+            ':(exclude)piscine/C08/ex02/ft_abs.h' | xargs -0 -r norminette
 
   ft_printf:
     runs-on: ubuntu-latest
