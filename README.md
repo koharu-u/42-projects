@@ -34,6 +34,7 @@ The repository is primarily used to:
 │
 ├── common-core/
 │   └── libft/
+│   └── ft_printf/
 │
 ├── shell.nix
 └── README.md
@@ -61,7 +62,7 @@ Projects from the 42 Common Core curriculum.
 | Project                        | Description                                                          | Status |
 | ------------------------------ | -------------------------------------------------------------------- | :----: |
 | [`libft`](./common-core/libft) | Reimplementation of common C library functions and utility functions |   ✅   |
-| [`ft_printf`](https://github.com/koharu-u/42-projects/tree/feat/ft_printf/common-core/ft_printf) | Reimplementation of printf from libc |   📝   |
+| [`ft_printf`](https://github.com/koharu-u/42-projects/tree/feat/ft_printf/common-core/ft_printf) | Reimplementation of printf from libc |   ✅   |
 
 More projects will be added as I progress through the curriculum.
 
@@ -97,7 +98,7 @@ Common Core  ███░░░░░░░░░░░░░░░░  in progr
 Current focus:
 
 ```text
-common-core/ft_printf
+common-core/get_next_line
 ```
 
 ---
